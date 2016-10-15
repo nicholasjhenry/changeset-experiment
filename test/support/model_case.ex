@@ -62,4 +62,15 @@ defmodule Directory.ModelCase do
     |> Ecto.Changeset.traverse_errors(&Directory.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
+
+  @doc """
+  Helper for returning list of errors in changeset.
+
+      assert {:password, "is unsafe"} in errors_on(user_changeset)
+  """
+  def errors_for(changeset) do
+   changeset
+    |> Ecto.Changeset.traverse_errors(&Directory.ErrorHelpers.translate_error/1)
+    |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
+  end
 end
