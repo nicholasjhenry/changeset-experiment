@@ -1,0 +1,36 @@
+<h1>New person</h1>
+
+<%= form_for @person_changeset, person_path(@conn, :create), fn f -> %>
+  <% error_tag f, :base %>
+  <p>
+    <%= label(f, :given_name) %>
+    <%= text_input(f, :given_name) %>
+    <%= error_tag f, :given_name %>
+  </p>
+  <p>
+    <%= label(f, :family_name) %>
+    <%= text_input(f, :family_name) %>
+    <%= error_tag f, :family_name %>
+  </p>
+  <fieldset>
+    <legend>Address</legend>
+    <%= fields_for f, @address_changeset, fn fa -> %>
+      <% error_tag fa, :base %>
+      <p>
+        <%= label(fa, :city) %>
+        <%= text_input(fa, :city) %>
+        <%= error_tag fa, :city %>
+      </p>
+      <p>
+        <%= label(fa, :region) %>
+        <%= text_input(fa, :region) %>
+        <%= error_tag fa, :region %>
+      </p>
+      <p>
+        <%= label(fa, :country) %>
+        <%= text_input(fa, :country) %>
+        <%= error_tag fa, :country %>
+      </p>
+    <% end %>
+    <%= submit "Save" %>
+<% end %>

@@ -1,0 +1,20 @@
+<h1>People</h1>
+
+<ul>
+  <%= for person <- @people do %>
+    <li>
+      <%= person.given_name %>
+      <%= person.family_name %>
+
+      <ul>
+      <%= for address <- person.addresses do %>
+        <li>
+          <%= address.city %>
+          <%= address.region %>
+          <%= address.country %>
+        </li>
+      <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

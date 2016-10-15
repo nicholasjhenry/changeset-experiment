@@ -39,3 +39,6 @@ config :directory, Directory.Repo,
   database: "directory_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :mix_test_watch,
+  clear: true
